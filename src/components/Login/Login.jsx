@@ -4,8 +4,19 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FormField } from 'components/FormField/FormField';
 import { defaultValues, validationSchema } from './formikConfig';
-import { fb } from 'hooks';
+import { fb } from 'service';
 
+console.log("work");
+fb.auth()
+.createCustomToken("uid")
+.then((customToken) => {
+ // token = customToken;
+  console.log(customToken);
+  // Send token back to client
+})
+.catch((error) => {
+  console.log('Error creating custom token:', error);
+});
 export const Login = () => {
     const history = useHistory();
     const [serverError, setServerError] = useState('');
